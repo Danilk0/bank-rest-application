@@ -1,6 +1,5 @@
 package com.example.bankcards.dto;
 
-import lombok.Data;
 import lombok.Value;
 import org.springframework.data.domain.Page;
 

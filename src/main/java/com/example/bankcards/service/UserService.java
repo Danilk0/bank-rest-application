@@ -1,19 +1,15 @@
 package com.example.bankcards.service;
 
 import com.example.bankcards.dto.user.UserResponse;
-import com.example.bankcards.entity.Task;
-import com.example.bankcards.repository.TaskRepository;
 import com.example.bankcards.repository.UserRepository;
 import com.example.bankcards.util.mapper.UserResponseMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import com.example.bankcards.entity.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service

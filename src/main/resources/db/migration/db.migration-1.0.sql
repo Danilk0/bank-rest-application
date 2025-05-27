@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS users
     role VARCHAR(255),
     block boolean default false
 );
+--rollback drop table users;
 
 --changeset dmoskalyuk:2
 CREATE TABLE IF NOT EXISTS card
@@ -23,6 +24,8 @@ CREATE TABLE IF NOT EXISTS card
     balance decimal not null check ( balance > 0 ) default 0,
     user_id INT REFERENCES users(id)
 );
+--rollback drop table card;
+
 
 --changeset dmoskalyuk:3
 CREATE TABLE IF NOT EXISTS tasks
@@ -30,3 +33,4 @@ CREATE TABLE IF NOT EXISTS tasks
     id BIGSERIAL PRIMARY KEY ,
     user_id BIGINT REFERENCES users(id)
 );
+--rollback drop table tasks;

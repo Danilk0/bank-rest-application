@@ -2,6 +2,7 @@ package com.example.bankcards.exception;
 
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.example.bankcards.dto.ApiError;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,10 @@ public class RestControllerExceptionHandler extends ResponseEntityExceptionHandl
         }
         if(ex instanceof UserBlockedException){
             error = new ApiError(401, "User block!", new Date());
+            return new ResponseEntity<>(error, HttpStatusCode.valueOf(401));
+        }
+        if(ex instanceof WrongStatusException){
+            error = new ApiError(401, "Check card validity period!", new Date());
             return new ResponseEntity<>(error, HttpStatusCode.valueOf(401));
         }
         error = new ApiError(404, ex.getMessage(), new Date());

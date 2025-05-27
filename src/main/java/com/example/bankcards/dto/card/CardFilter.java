@@ -4,11 +4,8 @@ package com.example.bankcards.dto.card;
 import com.example.bankcards.entity.Status;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

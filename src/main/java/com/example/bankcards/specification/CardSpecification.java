@@ -5,7 +5,6 @@ import com.example.bankcards.entity.Card;
 import com.example.bankcards.entity.Status;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
