@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,12 +26,11 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-    @Qualifier("handlerExceptionResolver")
-    private final HandlerExceptionResolver handlerExceptionResolver;
     public static final String BEARER_PREFIX = "Bearer ";
     public static final String HEADER_NAME = "Authorization";
     private final JwtUtil jwtUtil;
     private final UserService userService;
+    private final DefaultErrorAttributes errorAttributes;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -66,7 +66,7 @@ public class JwtFilter extends OncePerRequestFilter {
             }
             filterChain.doFilter(request, response);
         }catch (Exception e){
-            handlerExceptionResolver.resolveException(request, response, null, e);
+            errorAttributes.resolveException(request, response, null, e);
             filterChain.doFilter(request, response);
         }
 
